@@ -12,12 +12,12 @@ struct Point {
 
 class GrahamScan {
 private:
-    // Odlegosc punktow, ale bez pierwiastka, bo to tylko do porownania
+    // Odlegosc punktow, ale bez pierwiastka, wieksza szybkosc wykonania programu, nie wplywa na wynik
     double dist(Point a, Point b) {
         return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
     }
 
-    // Oblicza orientacje 3 punktow (czy skreca w prawo, lewo czy wspoliniowe)
+    // Oblicza orientacje 3 punktow (czy skreca w prawo, lewo albo czy sa wspoliniowe)
     // Iloczyn wektorowy dwoch wektorow (cross product) 
     int orientation(Point a, Point b, Point c) {
         double v = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
@@ -62,7 +62,7 @@ public:
         // 4. Przechodzimy przez reszte punktow i kontrolujemy by skret byl w lewo (odwrotny do ruchu wskazowek zegara)
         for (int i = 3; i < n; i++) {
             while (shell.size() >= 2 && orientation(shell[shell.size()-2], shell.back(), points[i]) <= 0) {
-                shell.pop_back(); // Jesli skret w prawo to usun
+                shell.pop_back(); // Jesli skret w prawo to usun ze stosu
             }
 
             shell.push_back(points[i]);

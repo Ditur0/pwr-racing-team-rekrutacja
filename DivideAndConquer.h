@@ -17,7 +17,7 @@ private:
         return sqrt(pow((a.x - b.x), 2) + pow((a.y - b.y), 2));
     }
 
-    // Funkcja przeszukuje kazdy punkt z kazdym i szuka najblizszej odlegosci (dla malej ilosci punktow)
+    // Funkcja przeszukuje kazdy punkt z kazdym i szuka najblizszej odlegosci (dobry dla malej ilosci punktow)
     Result bruteForce(std::vector<Point>& points, int left, int right) {
         Result bestResult = { DBL_MAX, {0,0}, {0,0} };
 
@@ -36,7 +36,6 @@ private:
     }
 
 public:
-    
     // Rekurencyjna metoda Divide And Conquer (dzieli rekurencyjnie na dwie polowy i znajduje najblizsza odleglosc)
     Result closestPairRecursive(std::vector<Point>& points, int left, int right) {
         
@@ -60,13 +59,13 @@ public:
         
         double distance = bestResult.distance;
 
-        // 4. Gdy znalezlismy najmnniejsza odlegosc -> "tworzymy pasek wokol srodka szerokosci 2*distance" poniewaz musimy sprawdzic czy na laczeniu srodka nie ma blizszych punktow
+        // 4. Gdy znalezlismy najmnniejsza odlegosc -> "tworzymy" pasek wokol srodka o szerokosci = 2*distance, poniewaz musimy sprawdzic czy na laczeniu srodka nie ma blizszych punktow
         std::vector<Point> strip;
         for (int i = left; i < right; i++) {
             if (fabs(points[i].x - midX) < distance) strip.push_back(points[i]);
         }
 
-        // 5. Sprawdzamy w paseku czy tam nie ma namniejszej odleglosci
+        // 5. Sprawdzamy w pasku czy tam nie ma namniejszej odleglosci
         std::sort(strip.begin(), strip.end(), [](Point a, Point b){
             return a.y < b.y;
         });
@@ -85,9 +84,10 @@ public:
         return bestResult;
     }
 
+    // Glowna funnkcja algorytmu
     Result closestPair(std::vector<Point>& points) {
         std::sort(points.begin(), points.end(), [](Point a, Point b) {
-            return a.x < b.x;
+            return a.x < b.x; // Sortujemy punkty wzgledem osi X, by lepiej podzielic na polowe lewa i prawa
         });
 
         return closestPairRecursive(points, 0, points.size());

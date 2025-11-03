@@ -5,6 +5,7 @@
 #include <cmath>
 #include "GrahamScan.h"
 #include "DivideAndConquer.h"
+#include "TwoParallelLines.h"
 
 using namespace std;
 
@@ -44,12 +45,16 @@ int main() {
     cout << "\n";
 
     // --------------------------------------------- ZADANIE 2. ---------------------------------------------
-    DivideAndConquer divideAlgorithm;
-    Result closestPair = divideAlgorithm.closestPair(points);
-    cout << "Najblizsze punkty: " << "[(" << closestPair.point1.x << ", " << closestPair.point1.y << "), (" << closestPair.point2.x << ", " << closestPair.point2.y << ")] d = " << closestPair.distance;
+    TwoParallelLines twoParallelLines;
+    double distance = twoParallelLines.findMinDistance(shell);
+    cout << "Proste: d = " << distance;
     cout << "\n";
 
     // --------------------------------------------- ZADANIE 3. ---------------------------------------------
+    DivideAndConquer divideAlgorithm;
+    Result closestPair = divideAlgorithm.closestPair(points);
+    cout << "Najblizsze punkty: " << "[(" << closestPair.point1.x << ", " << closestPair.point1.y << "), (" << closestPair.point2.x << ", " << closestPair.point2.y << ")], d = " << closestPair.distance;
+    cout << "\n";
 
     return 0;
 }
