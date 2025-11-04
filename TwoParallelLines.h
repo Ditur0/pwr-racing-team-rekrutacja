@@ -22,8 +22,8 @@ public:
     double findMinDistance(std::vector<Point> shell) {
         int n = shell.size();
         if (n < 2) return 0; // Gdy jest jeden punkt wartosc wynosi 0
+        if (n == 2) return sqrt((shell[0].x - shell[1].x) * (shell[0].x - shell[1].x) + (shell[0].y - shell[1].y) * (shell[0].y - shell[1].y)); 
 
-        // double minDistance = DBL_MAX;
         std::vector<double> distances;
         std::vector<double> distancesForEachWall;
 

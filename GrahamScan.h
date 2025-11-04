@@ -12,7 +12,7 @@ struct Point {
 
 class GrahamScan {
 private:
-    // Odlegosc punktow, ale bez pierwiastka, wieksza szybkosc wykonania programu, nie wplywa na wynik
+    // Odlegosc punktow, ale bez pierwiastka, wieksza szybkosc wykonania programu (nie wplywa na wynik)
     double dist(Point a, Point b) {
         return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
     }

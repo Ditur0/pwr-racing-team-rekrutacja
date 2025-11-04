@@ -10,12 +10,11 @@
 using namespace std;
 
 int main() {
-    // string filename;
-    // cout << "Podaj nazwe pliku: ";
-    // cin >> filename;
-    // 
-    // ifstream file(filename);
-    ifstream file("points.txt");
+    string filename;
+    cout << "Podaj nazwe pliku: ";
+    cin >> filename;
+    
+    ifstream file(filename);
     if (!file) {
         cout << "Nie mozna otworzyc pliku." << endl;
         return 1;
