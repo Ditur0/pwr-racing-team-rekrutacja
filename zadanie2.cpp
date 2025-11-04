@@ -9,6 +9,10 @@
 
 using namespace std;
 
+// Program rekrutacyjny PWR Racing Team — dział Software
+// Zadania: otoczka wypukła, minimalna odległość między prostymi, najbliższa para punktów
+// Autor: Artur Skrzypczak
+
 int main() {
     string filename;
     cout << "Podaj nazwe pliku: ";
@@ -16,12 +20,17 @@ int main() {
     
     ifstream file(filename);
     if (!file) {
-        cout << "Nie moznaotworzyc pliku." << endl;
+        cout << "Nie mozna otworzyc pliku." << endl;
         return 1;
     }
 
     int n;
     file >> n; // Wczytanie ilosci punktow
+
+    if (n <= 0) {
+        cout << "Nieprawidlowa liczba punktow!\n";
+        return 1;
+    }
 
     vector<Point> points;
     points.reserve(n); // Rezerwuje w pamieci ilosc punktow ktore przyjmie
@@ -52,7 +61,8 @@ int main() {
     // --------------------------------------------- ZADANIE 3. ---------------------------------------------
     DivideAndConquer divideAlgorithm;
     Result closestPair = divideAlgorithm.closestPair(points);
-    cout << "Najblizsze punkty: " << "[(" << closestPair.point1.x << ", " << closestPair.point1.y << "), (" << closestPair.point2.x << ", " << closestPair.point2.y << ")], d = " << closestPair.distance;
+    double pointsDistance = sqrt(closestPair.distance);
+    cout << "Najblizsze punkty: " << "[(" << closestPair.point1.x << ", " << closestPair.point1.y << "), (" << closestPair.point2.x << ", " << closestPair.point2.y << ")], d = " << pointsDistance;
     cout << "\n";
 
     return 0;

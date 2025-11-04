@@ -4,11 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-
-struct Point {
-    double x;
-    double y;
-};
+#include "Point.h"
 
 class GrahamScan {
 private:
@@ -30,7 +26,7 @@ private:
 public:
     std::vector<Point> findShell(std::vector<Point> points) {
         int n = points.size();
-        if (n < 3) return points; // Otoczka nie ma sensu, gdy jest mniej niz 3 punkty
+        if (n <= 3) return points; // Otoczka nie ma sensu, gdy jest mniej niz 3 punkty
 
         // 1. Szukamy punkty o najmniejszym Y (gdy jest remis, bierzemy najmniejszego X)
         std::sort(points.begin(), points.end(), [](Point a, Point b) {

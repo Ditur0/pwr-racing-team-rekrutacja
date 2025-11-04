@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include "Point.h"
 
 class TwoParallelLines {
 private:
@@ -46,8 +47,8 @@ public:
             }
 
             // Wybieramy najdalszy dystans
-            double greatesDistance = *std::max_element(distances.begin(), distances.end());
-            distancesForEachWall.push_back(greatesDistance);
+            double greatestDistance = *std::max_element(distances.begin(), distances.end());
+            distancesForEachWall.push_back(greatestDistance);
             distances.clear();
         }
 

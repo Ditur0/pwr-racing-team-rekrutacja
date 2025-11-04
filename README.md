@@ -2,9 +2,44 @@
 Zadania rekrutacyjne do działu **software**.
 
 ## Zadanie 2.1
+Program znajduje ***najmniejszy podzbiór takich punktów***, które
+***otaczają wszystkie inne punkty***.
 
-Użyłem do tego problemu algorytmu Graham Scan
+```
+      ○   --  ○
+    /       .    \  
+   /    ·  . .    ○
+  ○     .  .  .   / 
+    \            /
+      ○   ---  ○
+```
 
+### Opis działania:
+**Algorytm Graham Scan***
+
+- Wyznaczenie punktu o **najmniejszej wartości współrzędnej Y. Jeśli kilka ma tę samą wartość — wybieramy ten o najmniejszym X. **Oznaczamy go jako p0***.
+
+- Sortowanie pozostałych punktów według **kąta względem p0**.
+
+- Wstawienie **trzech pierwszych punktów** na stos.
+
+- Iteracja przez kolejne punkty:
+     - sprawdzamy, czy przejście tworzy **skręt przeciwny do ruchu wskazówek zegara**
+     - jeśli **tak** → dodajemy punkt do otoczki
+     - jeśli **nie** → usuwamy poprzedni punkt ze stosu i ponownie sprawdzamy.
+
+### Napotkane problemy i ich rozwiązanie: 
+
+- **Problem:** Trudność w zrozumieniu iloczynu wektorowego i określenia kierunku skrętu
+
+- **Rozwiązanie:** Analiza wzoru matematycznego, rysowanie sytuacji, zrozumienie geometrii
+
+### Zastosowane technologie i narzędzia:
+- Algorytm **Graham Scan** — obliczanie otoczki
+- `std::sort` — sortowanie punktów według kąta względem **p0**
+- Funkcje pomocnicze:
+     - obliczanie **iloczynu wektorowego**
+     - obliczanie **dystansu między punktami**
 
 ## Zadanie 2.2
 Program znajduje **najbliższe dwie równoległe proste**, takie że wszystkie punkty ze zbioru znajdują się na nich lub pomiędzy nimi.
@@ -30,7 +65,7 @@ Minimalna odległość między prostymi
 
 - Z otrzymanych wartości wybieramy **maksymalną odległość** dla niej krawędzi.
 
-- Spośród maksymalnych odległości dla wszystkich krawędzi wynieramy **minimalną** — jest to najmniejsza możliwa odległość między dwiema równoległymi prostymi spełniającymi warunki zadania.
+- Spośród maksymalnych odległości dla wszystkich krawędzi wybieramy **minimalną** — jest to najmniejsza możliwa odległość między dwiema równoległymi prostymi spełniającymi warunki zadania.
 
 ### Zastosowane technologie i narzędzia:
 - Algorytm **Graham Scan** (otoczka wypukła)

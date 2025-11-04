@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cfloat>
+#include "Point.h"
 
 struct Result {
     double distance;
@@ -14,7 +15,7 @@ struct Result {
 class DivideAndConquer {
 private:
      double distSq(Point a, Point b) {
-        return sqrt(pow((a.x - b.x), 2) + pow((a.y - b.y), 2));
+        return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
     }
 
     // Funkcja przeszukuje kazdy punkt z kazdym i szuka najblizszej odlegosci (dobry dla malej ilosci punktow)
@@ -62,7 +63,7 @@ public:
         // 4. Gdy znalezlismy najmnniejsza odlegosc -> "tworzymy" pasek wokol srodka o szerokosci = 2*distance, poniewaz musimy sprawdzic czy na laczeniu srodka nie ma blizszych punktow
         std::vector<Point> strip;
         for (int i = left; i < right; i++) {
-            if (fabs(points[i].x - midX) < distance) strip.push_back(points[i]);
+            if ((points[i].x - midX)*(points[i].x - midX) < distance) strip.push_back(points[i]);
         }
 
         // 5. Sprawdzamy w pasku czy tam nie ma namniejszej odleglosci
@@ -71,7 +72,7 @@ public:
         });
 
         for (int i = 0; i < strip.size(); i++) {
-            for (int j = i+1; j < strip.size() && (strip[j].y - strip[i].y) < bestResult.distance; j++) {
+            for (int j = i+1; j < strip.size() && (strip[j].y - strip[i].y)*(strip[j].y - strip[i].y) < bestResult.distance; j++) {
                 double tempDistance = distSq(strip[i], strip[j]);
                 if (tempDistance < bestResult.distance) {
                     bestResult.distance = tempDistance;
