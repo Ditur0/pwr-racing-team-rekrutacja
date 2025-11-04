@@ -16,7 +16,7 @@ int main() {
     
     ifstream file(filename);
     if (!file) {
-        cout << "Nie mozna otworzyc pliku." << endl;
+        cout << "Nie moznaotworzyc pliku." << endl;
         return 1;
     }
 

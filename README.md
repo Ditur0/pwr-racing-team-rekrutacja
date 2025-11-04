@@ -1,5 +1,5 @@
-# PWR RACING TEAM ![](https://racing-pwr.pl/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.a822dc58.png&w=1200&q=75)
-Zadania rekrutacyjne do działu software.
+# PWR RACING TEAM
+Zadania rekrutacyjne do działu **software**.
 
 ## Zadanie 2.1
 
@@ -62,7 +62,7 @@ W rozwiązaniu zastosowano algorytm **Divide & Conquer (Dziel i Zwyciężaj)**, 
 
 - Wybranie **mniejszej z dwóch znalezionych odległości**.
 
-- "utworzenie" **paska (obszaru)** wokół środka o **szerokości** ```2 x min_dystans```.
+- "Utworzenie" **paska (obszaru)** wokół środka o **szerokości** ```2 x min_dystans```.
 
 - Sprawdzenie punktów znajdujących się w pasku — **może tam znajdować się para bliższa niż w podzbiorach**.
 
